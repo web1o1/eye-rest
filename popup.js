@@ -14,8 +14,18 @@ changeColor.onclick = function(element) {
   });
 
   // Create a new window
-  chrome.windows.create({width: 100, height: 100}, function() {
-    // After two seconds, I want to remove the window
-  });
-
+  createWindow();
 };
+
+function createWindow() {
+  chrome.windows.create({width: 100, height: 100}, getCurrentWindow);
+}
+
+function getCurrentWindow() {
+  chrome.windows.getCurrent({populate: true, windowType: ['popup']}, removeWindow);
+}
+
+function removeWindow(win) {
+  targetWindow = win;
+  chrome.windows.remove(targetWindow.id);
+}
