@@ -12,10 +12,22 @@ changeColor.onclick = function(element) {
         tabs[0].id,
         {code: 'document.body.style.backgroundColor = "' + color + '";'});
   });
-
-  // Create a new window then remove it after 20 seconds
-  createWindow();
 };
+
+let switchButton = document.getElementById('switch');
+switchButton.onclick = function() {
+  let switchClasses = switchButton.classList;
+  if (!switchClasses.contains('switch--on')) {
+    switchClasses.add('switch--on');
+    switchClasses.remove('switch--off');
+  } else {
+    switchClasses.add('switch--off');
+    switchClasses.remove('switch--on');
+  }
+}
+
+// Create a new window then remove it after 20 seconds
+// setInterval(createWindow, 2000);
 
 function createWindow() {
   chrome.windows.create({width: 100, height: 100}, getCurrentWindow);

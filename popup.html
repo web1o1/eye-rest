@@ -2,10 +2,16 @@
 <html>
   <head>
     <style>
-      button {
+      button, #switch {
         height: 30px;
         width: 30px;
         outline: none;
+      }
+      .switch--on {
+        background-color: green;
+      }
+      .switch--off {
+        background-color: red;
       }
     </style>
   </head>
@@ -14,6 +20,7 @@
     <div>
       <h1>Eye Rest</h1>
       <p>Turn on/off switch goes here</p>
+      <button id="switch"></button>
     </div>
     <script src="popup.js"></script>
   </body>

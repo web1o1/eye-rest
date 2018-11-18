@@ -13,7 +13,3 @@ chrome.runtime.onInstalled.addListener(function() {
     }]);
   });
 });
-
-// chrome.windows.onCreated.addListener(function() {
-//   console.log(chrome.tabs.getCurrent())
-// })
