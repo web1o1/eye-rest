@@ -13,7 +13,7 @@ changeColor.onclick = function(element) {
         {code: 'document.body.style.backgroundColor = "' + color + '";'});
   });
 
-  // Create a new window
+  // Create a new window then remove it after 20 seconds
   createWindow();
 };
 
@@ -21,8 +21,11 @@ function createWindow() {
   chrome.windows.create({width: 100, height: 100}, getCurrentWindow);
 }
 
-function getCurrentWindow() {
-  chrome.windows.getCurrent({populate: true, windowType: ['popup']}, removeWindow);
+function getCurrentWindow(currentWindow) {
+  chrome.windows.get(currentWindow.id, removeWindow);
+  // chrome.tabs.query({active: true}, function(tabs) {
+  //   chrome.tabs.remove(tabs[tabs.length].id);
+  // });
 }
 
 function removeWindow(win) {
