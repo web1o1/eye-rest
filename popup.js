@@ -12,8 +12,10 @@ changeColor.onclick = function(element) {
         tabs[0].id,
         {code: 'document.body.style.backgroundColor = "' + color + '";'});
   });
-  chrome.windows.create({
-    width: 100,
-    height: 100
+
+  // Create a new window
+  chrome.windows.create({width: 100, height: 100}, function() {
+    // After two seconds, I want to remove the window
   });
+
 };
