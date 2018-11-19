@@ -13,3 +13,6 @@ chrome.runtime.onInstalled.addListener(function() {
     }]);
   });
 });
+
+// This script should be persistent.
+// It should look for the count variable from popup.js

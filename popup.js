@@ -41,7 +41,10 @@ let setCount = function() {
   }
 }
 
-let counterFunc = setInterval(setCount, 1000)
+let counterFunc = setInterval(setCount, 1000);
+
+// Alternatively, create a snooze for x amount of time.
+// Maybe create a reset button as well (to reset the count back up to 20 min)
 
 // If the extension is running,
 // If the user has not clicked pause on the Popup HTML,
