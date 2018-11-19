@@ -49,6 +49,7 @@ let counterFunc = setInterval(setCount, 1000);
 // If the extension is running,
 // If the user has not clicked pause on the Popup HTML,
 // If the counter in the Popup HTML is down to 00:00,
+// https://developer.chrome.com/apps/alarms
 
 // Open a new window and set that Timer HTML to 20 sec
 // If the Timer HTML is down to 0 sec,
