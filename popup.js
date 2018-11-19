@@ -51,14 +51,3 @@ let counterFunc = setInterval(setCount, 1000)
 // If the Timer HTML is down to 0 sec,
 // Close that new window,
 // Reset the Popup HTML counter to 20:00.
-
-
-// var counter = 10;
-// var newYearCountdown = setInterval(function(){
-//   console.log(counter);
-//   counter--
-//   if (counter === 0) {
-//     console.log("HAPPY NEW YEAR!!");
-//     clearInterval(newYearCountdown);
-//   }
-// }, 1000);
