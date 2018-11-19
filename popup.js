@@ -27,10 +27,10 @@ switchButton.onclick = function() {
 }
 
 // Create a new window then remove it after 20 seconds
-// setInterval(createWindow, 2000);
+setInterval(createWindow, 2000);
 
 function createWindow() {
-  chrome.windows.create({width: 100, height: 100}, getCurrentWindow);
+  chrome.windows.create({url: 'timer.html', width: 100, height: 100}, getCurrentWindow);
 }
 
 function getCurrentWindow(currentWindow) {
