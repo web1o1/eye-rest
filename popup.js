@@ -28,26 +28,20 @@ switchButton.onclick = function() {
   }
 }
 
-// Create a new window every 20 minutes (test at 10s)
-// Then remove it after 20 seconds (test at 1s)
-createWindow();
+let counterElement = document.getElementById('counter');
+let count = 10;
 
-
-function createWindow() {
-  chrome.windows.create({url: 'timer.html', width: 100, height: 100}, getCurrentWindow);
+let setCount = function() {
+  count--;
+  counterElement.innerHTML = count;
+  if (count === 0) {
+    clearInterval(counterFunc);
+    chrome.windows.create({url: 'timer.html', width: 100, height: 100});
+    count = 10;
+  }
 }
 
-function getCurrentWindow(currentWindow) {
-  chrome.windows.get(currentWindow.id, setTimeout(removeWindow, 3000));
-  // chrome.tabs.query({active: true}, function(tabs) {
-  //   chrome.tabs.remove(tabs[tabs.length].id);
-  // });
-}
-
-function removeWindow(win) {
-  targetWindow = win;
-  chrome.windows.remove(targetWindow.id);
-}
+let counterFunc = setInterval(setCount, 1000)
 
 // If the extension is running,
 // If the user has not clicked pause on the Popup HTML,

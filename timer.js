@@ -6,6 +6,11 @@
 let timerElement = document.getElementById('timer');
 let time = 5;
 
+function removeWindow(win) {
+  targetWindow = win;
+  chrome.windows.remove(targetWindow.id);
+}
+
 let setTime = function() {
   time--;
   timerElement.innerHTML = time;
@@ -17,8 +22,3 @@ let setTime = function() {
 }
 
 let timerFunc = setInterval(setTime, 1000);
-
-function removeWindow(win) {
-  targetWindow = win;
-  chrome.windows.remove(targetWindow.id);
-}
