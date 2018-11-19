@@ -35,7 +35,6 @@ let setCount = function() {
   count--;
   counterElement.innerHTML = count;
   if (count === 0) {
-    clearInterval(counterFunc);
     chrome.windows.create({url: 'timer.html', width: 100, height: 100});
     count = 10;
   }
