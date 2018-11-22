@@ -15,7 +15,6 @@ changeColor.onclick = function(element) {
 };
 
 // If the switch is set on, continue counting down
-//
 let switchButton = document.getElementById('switch');
 switchButton.onclick = function() {
   let switchClasses = switchButton.classList;
@@ -31,16 +30,16 @@ switchButton.onclick = function() {
 let counterElement = document.getElementById('counter');
 let count = 10;
 
-let setCount = function() {
-  count--;
-  counterElement.innerHTML = count;
-  if (count === 0) {
-    chrome.windows.create({url: 'timer.html', width: 100, height: 100});
-    count = 10;
-  }
-}
+// let setCount = function() {
+//   count--;
+//   counterElement.innerHTML = count;
+//   if (count === 0) {
+//     chrome.windows.create({url: 'timer.html', width: 100, height: 100});
+//     count = 10;
+//   }
+// }
 
-let counterFunc = setInterval(setCount, 1000);
+// let counterFunc = setInterval(setCount, 1000);
 
 // Alternatively, create a snooze for x amount of time.
 // Maybe create a reset button as well (to reset the count back up to 20 min)
