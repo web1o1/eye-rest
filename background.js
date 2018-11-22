@@ -1,6 +1,6 @@
 let date = Date.now();
 
-chrome.runtime.onInstalled.addListener(function() {
+// chrome.runtime.onInstalled.addListener(function() {
   // chrome.storage.sync.set({color: '#3aa757', minCounter: 10, secTimer: 5}, function() {
   //   console.log("The color is green.");
   // });
@@ -31,7 +31,7 @@ chrome.runtime.onInstalled.addListener(function() {
     console.log('alarm maybe created');
   });
 
-});
+// });
 
 // This script should be persistent.
 // It should look for the count variable from popup.js
