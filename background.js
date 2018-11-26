@@ -3,9 +3,9 @@ let countdownMaxInMin = 0.25;
 let countdownMaxInSec = countdownMaxInMin * 60;
 let countdownMaxInMS = countdownMaxInSec * 1000;
 
-// Set countdown max in sec to pass to popup on install.
-chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.local.set({countdownMaxInSec: countdownMaxInSec});
+chrome.storage.local.set({
+  date: date,
+  isPaused: false
 });
 
 // Get the most recent alarm by name.

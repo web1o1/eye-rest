@@ -18,7 +18,8 @@ let updateCountdown = function() {
 updateCountdown();
 let countdownInterval = setInterval(updateCountdown, 100);
 
-// If the switch is set on, continue counting down
+// If the switch is set on, continue counting down.
+// If the switch is set to off, clear the existing alarm.
 let switchButton = document.getElementById('switch');
 switchButton.onclick = function() {
   let switchClasses = switchButton.classList;
