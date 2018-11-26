@@ -8,7 +8,7 @@ let updateCountdown = function() {
     // This sort of prevents the race condition by choosing between
     // 0 and the actual count. We basically want to prevent the popup
     // from ever displaying a negative number.
-    let count = Math.max(0, Math.round((data.nextAlarmTime - Date.now())/1000));
+    let count = Math.max(0, Math.ceil((data.nextAlarmTime - Date.now())/1000));
     counterElement.innerHTML = count;
   });
 };
@@ -16,7 +16,7 @@ let updateCountdown = function() {
 // Call the update countdown function immediately
 // Then update the countdown every 0.6s
 updateCountdown();
-let countdownInterval = setInterval(updateCountdown, 600);
+let countdownInterval = setInterval(updateCountdown, 100);
 
 // If the switch is set on, continue counting down
 let switchButton = document.getElementById('switch');

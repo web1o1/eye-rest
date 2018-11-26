@@ -1,5 +1,5 @@
 let date = Date.now();
-let countdownMaxInMin = 1;
+let countdownMaxInMin = 0.25;
 let countdownMaxInSec = countdownMaxInMin * 60;
 let countdownMaxInMS = countdownMaxInSec * 1000;
 
@@ -16,8 +16,8 @@ chrome.alarms.get('alarmName' + date, function(alarm) {
   if (alarm) {
     chrome.alarms.clear('alarmName' + date);
   }
-  chrome.alarms.create('alarmName' + date, {delayInMinutes: 1, periodInMinutes: countdownMaxInMin});
-  chrome.storage.local.set({nextAlarmTime: date+countdownMaxInMS});
+  chrome.alarms.create('alarmName' + date, {periodInMinutes: countdownMaxInMin});
+  chrome.storage.local.set({nextAlarmTime: Date.now()+countdownMaxInMS});
 });
 
 // Add a listener for when the alarm is up.
