@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Barrio|Roboto:400,500" rel="stylesheet">
     <style>
       body {
         padding: 1em 2em;
+        font-family: Roboto, Dosis, Helvetica, Arial, sans-serif;
+        font-size: 1em;
+        font-weight: 400;
+        background-color: aquamarine;
       }
       h1 {
-        text-align: center;
+        font-family: Barrio, Helvetica, Arial, sans-serif;
+        font-size: 3em;
+        letter-spacing: 4px;
       }
       #timer {
+        font-size: 1.5em;
+        font-weight: 500;
+      }
+      .center {
         text-align: center;
+      }
+      .attribution {
+        font-size: 0.5em;
+        text-align: right;
+      }
+      .lookaway {
+        width: 200px;
+        height: 200px;
+        display: block;
+        margin: 0 auto;
       }
     </style>
   </head>
   <body>
     <div>
-      <h1>Eye Rest</h1>
-      <p>Every 20 minutes, take a 20 second break and look away at an object 20 meters away.</p>
-      <span id="timer"></span>
+      <h1 class="center">Eye Rest</h1>
+      <p class="center">Every 20 minutes, take a 20 second break and look away at an object 20 meters away.</p>
+      <p id="timer" class="center">&nbsp;</p>
+      <img src="lookaway.gif" alt="An animated gif that says to look away" class="lookaway"/>
+      <p class="attribution">Gif by <a href="https://giphy.com/feibim" target="_blank" rel="noreferrer">@feibim</a></p>
     </div>
     <script src="timer.js"></script>
   </body>

@@ -8,7 +8,7 @@ let setCount = function() {
   if (countdown === 0) {
     countdown = coundownMaxInSec;
   }
-  chrome.storage.sync.set({countdown: countdown});
+  chrome.storage.local.set({countdown: countdown});
   console.log("The countdown is: " + countdown);
 }
 
@@ -32,8 +32,8 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
   if (alarm.name == 'alarmName' + date) {
     chrome.windows.create({
       url: 'timer.html',
-      width: 200,
-      height: 100,
+      width: 175,
+      height: 600,
       left: 5,
       top: 100
     });
