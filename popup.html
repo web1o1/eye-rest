@@ -2,25 +2,24 @@
 <html>
   <head>
     <style>
+      body {
+        width: 100px;
+        padding: 0 1em;
+      }
       button, #switch {
-        height: 30px;
-        width: 30px;
         outline: none;
       }
       .switch--on {
-        background-color: green;
       }
       .switch--off {
-        background-color: red;
       }
     </style>
   </head>
   <body>
     <div>
       <h1>Eye Rest</h1>
-      <p id="counter"></p>
-      <p>Pause?</p>
-      <button id="switch"></button>
+      <p id="counter">&nbsp;</p>
+      <button id="switch" class="switch--on">Pause</button>
     </div>
     <script src="popup.js"></script>
   </body>

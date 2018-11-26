@@ -1,16 +1,22 @@
 let date = Date.now();
 let countdownMaxInMin = 1;
-let coundownMaxInSec = countdownMaxInMin * 60;
-let countdown = coundownMaxInSec;
+let countdownMaxInSec = countdownMaxInMin * 60;
+let countdown = countdownMaxInSec;
 
 let setCount = function() {
   countdown--;
   if (countdown === 0) {
-    countdown = coundownMaxInSec;
+    countdown = countdownMaxInSec;
   }
   chrome.storage.local.set({countdown: countdown});
   console.log("The countdown is: " + countdown);
 }
+
+// Set countdown max in sec to pass to popup on install.
+chrome.runtime.onInstalled.addListener(function() {
+  chrome.storage.local.set({countdownMaxInSec: countdownMaxInSec});
+  console.log("the countdown max in sec is " + countdownMaxInSec)
+});
 
 // Get the most recent alarm by name.
 // If you find that alarm, clear it.
@@ -20,9 +26,7 @@ chrome.alarms.get('alarmName' + date, function(alarm) {
   if (alarm) {
     chrome.alarms.clear('alarmName' + date);
   }
-
   chrome.alarms.create('alarmName' + date, {delayInMinutes: 1, periodInMinutes: countdownMaxInMin});
-
   let counterFunc = setInterval(setCount, 1000);
 });
 
@@ -32,8 +36,8 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
   if (alarm.name == 'alarmName' + date) {
     chrome.windows.create({
       url: 'timer.html',
-      width: 175,
-      height: 600,
+      width: 180,
+      height: 650,
       left: 5,
       top: 100
     });

@@ -7,10 +7,11 @@ chrome.storage.local.get('countdown', function(data) {
     count--;
     counterElement.innerHTML = count;
     if (count === 0) {
-      count = data.countdown;
+      chrome.storage.local.get('countdownMaxInSec', function(data) {
+        count = data.countdownMaxInSec;
+      });
     }
   }
-
   let counterFunc = setInterval(setCount, 1000);
 });
 
@@ -22,9 +23,11 @@ switchButton.onclick = function() {
   if (!switchClasses.contains('switch--on')) {
     switchClasses.add('switch--on');
     switchClasses.remove('switch--off');
+    switchButton.innerHTML = 'Pause';
   } else {
     switchClasses.add('switch--off');
     switchClasses.remove('switch--on');
+    switchButton.innerHTML = 'Resume';
   }
 }
 
