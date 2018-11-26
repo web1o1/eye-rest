@@ -2,7 +2,7 @@
 let counterElement = document.getElementById('counter');
 
 chrome.storage.sync.get('countdown', function(data) {
-  let count = data.countdown;
+  let count = data.countdown - 1;
   let setCount = function() {
     count--;
     counterElement.innerHTML = count;

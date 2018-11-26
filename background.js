@@ -30,7 +30,13 @@ chrome.alarms.get('alarmName' + date, function(alarm) {
 // When the alarm is up, create a window with timer.html.
 chrome.alarms.onAlarm.addListener(function(alarm) {
   if (alarm.name == 'alarmName' + date) {
-    chrome.windows.create({url: 'timer.html', width: 300, height: 100});
+    chrome.windows.create({
+      url: 'timer.html',
+      width: 300,
+      height: 100,
+      left: -100,
+      top: 100
+    });
   }
 });
 
