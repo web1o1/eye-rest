@@ -1,15 +1,7 @@
 let date = Date.now();
 let countdownMaxInMin = 1;
 let countdownMaxInSec = countdownMaxInMin * 60;
-let countdown = countdownMaxInSec;
-
-let setCount = function() {
-  countdown--;
-  if (countdown === 0) {
-    countdown = countdownMaxInSec;
-  }
-  chrome.storage.local.set({countdown: countdown});
-}
+let countdownMaxInMS = countdownMaxInSec * 1000;
 
 // Set countdown max in sec to pass to popup on install.
 chrome.runtime.onInstalled.addListener(function() {
@@ -25,13 +17,16 @@ chrome.alarms.get('alarmName' + date, function(alarm) {
     chrome.alarms.clear('alarmName' + date);
   }
   chrome.alarms.create('alarmName' + date, {delayInMinutes: 1, periodInMinutes: countdownMaxInMin});
-  let counterFunc = setInterval(setCount, 1000);
+  chrome.storage.local.set({nextAlarmTime: date+countdownMaxInMS});
 });
 
 // Add a listener for when the alarm is up.
 // When the alarm is up, create a window with timer.html.
 chrome.alarms.onAlarm.addListener(function(alarm) {
   if (alarm.name == 'alarmName' + date) {
+    let nextAlarmTime = alarm.scheduledTime + countdownMaxInMS;
+    chrome.storage.local.set({nextAlarmTime: nextAlarmTime});
+
     chrome.windows.create({
       url: 'timer.html',
       width: 180,

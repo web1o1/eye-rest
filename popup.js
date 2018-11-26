@@ -1,20 +1,22 @@
-// let changeColor = document.getElementById('changeColor');
 let counterElement = document.getElementById('counter');
 
-chrome.storage.local.get('countdown', function(data) {
-  let count = data.countdown - 1;
-  let setCount = function() {
-    count--;
+// This will get the next alarm time from storage,
+// calculate that time minus the current time,
+// convert to seconds, then set the popup to that time.
+let updateCountdown = function() {
+  chrome.storage.local.get('nextAlarmTime', function(data) {
+    // This sort of prevents the race condition by choosing between
+    // 0 and the actual count. We basically want to prevent the popup
+    // from ever displaying a negative number.
+    let count = Math.max(0, Math.round((data.nextAlarmTime - Date.now())/1000));
     counterElement.innerHTML = count;
-    if (count === 0) {
-      chrome.storage.local.get('countdownMaxInSec', function(data) {
-        count = data.countdownMaxInSec;
-      });
-    }
-  }
-  let counterFunc = setInterval(setCount, 1000);
-});
+  });
+};
 
+// Call the update countdown function immediately
+// Then update the countdown every 0.6s
+updateCountdown();
+let countdownInterval = setInterval(updateCountdown, 600);
 
 // If the switch is set on, continue counting down
 let switchButton = document.getElementById('switch');
