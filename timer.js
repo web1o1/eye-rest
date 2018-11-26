@@ -4,7 +4,7 @@
 // Reset the Popup HTML counter to 20:00.
 
 let timerElement = document.getElementById('timer');
-let time = 5;
+let time = 20;
 
 function removeWindow(win) {
   targetWindow = win;
@@ -12,12 +12,12 @@ function removeWindow(win) {
 }
 
 let setTime = function() {
+  timerElement.innerHTML = time + ' sec';
   time--;
-  timerElement.innerHTML = time;
   if (time === 0) {
     clearInterval(timerFunc);
     chrome.windows.getCurrent(removeWindow);
-    time = 5;
+    time = 20;
   }
 }
 
