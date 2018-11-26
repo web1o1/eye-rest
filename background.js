@@ -32,9 +32,9 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
   if (alarm.name == 'alarmName' + date) {
     chrome.windows.create({
       url: 'timer.html',
-      width: 300,
+      width: 200,
       height: 100,
-      left: -100,
+      left: 5,
       top: 100
     });
   }
