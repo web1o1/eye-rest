@@ -41,15 +41,3 @@ let count = 10;
 
 // let counterFunc = setInterval(setCount, 1000);
 
-// Alternatively, create a snooze for x amount of time.
-// Maybe create a reset button as well (to reset the count back up to 20 min)
-
-// If the extension is running,
-// If the user has not clicked pause on the Popup HTML,
-// If the counter in the Popup HTML is down to 00:00,
-// https://developer.chrome.com/apps/alarms
-
-// Open a new window and set that Timer HTML to 20 sec
-// If the Timer HTML is down to 0 sec,
-// Close that new window,
-// Reset the Popup HTML counter to 20:00.
