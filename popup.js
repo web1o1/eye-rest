@@ -34,5 +34,8 @@ switchButton.onclick = function() {
   }
 }
 
+// If isPaused = true, store the existing count to pass back to
+// background.js, clear the existing alarm by using the date
+// in storage.
 
-
+// If isPaused = false, create the new alarm here.

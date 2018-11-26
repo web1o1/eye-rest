@@ -37,4 +37,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
   }
 });
 
-
+// If isPaused = true, get the existing count and
+// create an alarm where delayInMinutes is the count
+// plus whatever snooze amount chosen in Options (if we want snooze)
+testFunc();
