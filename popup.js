@@ -26,10 +26,21 @@ switchButton.onclick = function() {
   if (!switchClasses.contains('switch--on')) {
     switchClasses.add('switch--on');
     switchClasses.remove('switch--off');
+    chrome.storage.local.set({ isPaused: false });
+    chrome.storage.local.get(['pausedCount','countdownMaxInMin'], function(data) {
+      clearAndCreateAlarm(data.pausedCount/60, data.countdownMaxInMin);
+    });
+    countdownInterval = setInterval(updateCountdown, 100);
     switchButton.innerHTML = 'Pause';
   } else {
     switchClasses.add('switch--off');
     switchClasses.remove('switch--on');
+    chrome.storage.local.set({
+      isPaused: true,
+      pausedCount: parseInt(counterElement.innerHTML, 10)
+    });
+    clearInterval(countdownInterval);
+    clearAlarm();
     switchButton.innerHTML = 'Resume';
   }
 }

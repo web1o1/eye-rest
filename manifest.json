@@ -4,7 +4,7 @@
   "description": "An extension to rest your eyes",
   "permissions": ["activeTab", "alarms", "declarativeContent", "storage", "tabs"],
   "background": {
-    "scripts": ["test.js", "background.js"],
+    "scripts": ["helpers.js", "background.js"],
     "persistent": false
   },
   "options_page": "options.html",
