@@ -1,5 +1,5 @@
 let date = Date.now();
-let countdownMaxInMin = 0.25;
+let countdownMaxInMin = 20;
 let countdownMaxInSec = countdownMaxInMin * 60;
 let countdownMaxInMS = countdownMaxInSec * 1000;
 
