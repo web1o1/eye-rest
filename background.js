@@ -32,8 +32,8 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 
     chrome.windows.create({
       url: 'timer.html',
-      width: 180,
-      height: 650,
+      width: 550,
+      height: 500,
       left: 5,
       top: 100
     });

@@ -2,18 +2,11 @@
 <html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Barrio|Roboto:400,600" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <style>
       body {
         width: 260px;
-        padding: 1em;
-        color: #333;
-        font-family: Roboto, Dosis, Helvetica, Arial, sans-serif;
         background-color: mediumspringgreen;
-      }
-      h1 {
-        font-family: Barrio, Helvetica, Arial, sans-serif;
-        font-size: 3em;
-        letter-spacing: 4px;
       }
       #counter {
         margin: 0 0 0.5em;
@@ -28,35 +21,28 @@
         border-radius: 4px;
         box-shadow: 1px 1px 1px #333;
         background-color: coral;
-        color: #333;
         font-size: 1.4em;
         text-transform: capitalize;
       }
-      .is-not-paused {
+      #switch.is-not-paused {
+        color: bisque;
       }
-      .is-paused {
-      }
-      .flex {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      #switch.is-paused {
+        color: coral;
+        background-color: bisque;
       }
       .title-box {
-        padding: 0 2em;
         text-align: right;
         border-right: 1px solid #333;
       }
-      .button-box {
-        padding: 0 2em;
-      }
     </style>
   </head>
-  <body>
-    <div class="flex">
-      <div class="title-box">
+  <body class="p1">
+    <div class="flex flex--center">
+      <div class="pv1ph2 title-box">
         <h1>Eye Rest</h1>
       </div>
-      <div class="button-box">
+      <div class="ph2 button-box">
         <p id="counter">&nbsp;</p>
         <button id="switch" class="is-not-paused">Pause</button>
       </div>
