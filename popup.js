@@ -2,6 +2,7 @@ let counterElement = document.getElementById('counter');
 let switchButton = document.getElementById('switch');
 let switchClasses = switchButton.classList;
 let countdownInterval;
+let count;
 
 let secToMin = function(timeInSec) {
   let sec = timeInSec%60;
@@ -20,7 +21,7 @@ let updateCountdown = function() {
     // This sort of prevents the race condition by choosing between
     // 0 and the actual count. We basically want to prevent the popup
     // from ever displaying a negative number.
-    let count = Math.max(0, Math.ceil((data.nextAlarmTime - Date.now())/1000));
+    count = Math.max(0, Math.ceil((data.nextAlarmTime - Date.now())/1000));
     counterElement.innerHTML = secToMin(count);
   });
 };
@@ -53,13 +54,6 @@ let isPausedDisplay = function() {
   switchButton.innerHTML = 'Resume';
 };
 
-let parseTimeStr = function(timeStr) {
-  let timeArr = timeStr.split(':').map((s) => {
-    return parseInt(s, 10);
-  });
-  return timeArr[0]*60 + timeArr[1];
-}
-
 // If the switch is set on, continue counting down.
 // If the switch is set to off, clear the existing alarm.
 switchButton.onclick = function() {
@@ -74,7 +68,7 @@ switchButton.onclick = function() {
     isPausedDisplay();
     chrome.storage.local.set({
       isPaused: true,
-      pausedCount: parseTimeStr(counterElement.innerHTML)
+      pausedCount: count
     });
     clearInterval(countdownInterval);
     clearAlarm();
