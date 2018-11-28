@@ -3,6 +3,15 @@ let switchButton = document.getElementById('switch');
 let switchClasses = switchButton.classList;
 let countdownInterval;
 
+let secToMin = function(timeInSec) {
+  let sec = timeInSec%60;
+  let min = (timeInSec-sec)/60;
+  if (sec < 10) {
+    sec = '0' + sec;
+  }
+  return min + ':' + sec;
+}
+
 // This will get the next alarm time from storage,
 // calculate that time minus the current time,
 // convert to seconds, then set the popup to that time.
@@ -12,12 +21,7 @@ let updateCountdown = function() {
     // 0 and the actual count. We basically want to prevent the popup
     // from ever displaying a negative number.
     let count = Math.max(0, Math.ceil((data.nextAlarmTime - Date.now())/1000));
-    let sec = count%60;
-    let min = (count-sec)/60;
-    if (sec < 10) {
-      sec = '0' + sec;
-    }
-    counterElement.innerHTML = min + ':' + sec;
+    counterElement.innerHTML = secToMin(count);
   });
 };
 
@@ -31,7 +35,7 @@ chrome.storage.local.get('isPaused', function(data) {
     isNotPausedDisplay();
   } else {
     chrome.storage.local.get('pausedCount', function(data) {
-      counterElement.innerHTML = data.pausedCount;
+      counterElement.innerHTML = secToMin(data.pausedCount);
     });
     isPausedDisplay();
   }
@@ -49,6 +53,13 @@ let isPausedDisplay = function() {
   switchButton.innerHTML = 'Resume';
 };
 
+let parseTimeStr = function(timeStr) {
+  let timeArr = timeStr.split(':').map((s) => {
+    return parseInt(s, 10);
+  });
+  return timeArr[0]*60 + timeArr[1];
+}
+
 // If the switch is set on, continue counting down.
 // If the switch is set to off, clear the existing alarm.
 switchButton.onclick = function() {
@@ -60,10 +71,10 @@ switchButton.onclick = function() {
     });
     countdownInterval = setInterval(updateCountdown, 100);
   } else {
-    isPausedDisplay()
+    isPausedDisplay();
     chrome.storage.local.set({
       isPaused: true,
-      pausedCount: parseInt(counterElement.innerHTML, 10)
+      pausedCount: parseTimeStr(counterElement.innerHTML)
     });
     clearInterval(countdownInterval);
     clearAlarm();
