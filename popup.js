@@ -14,6 +14,9 @@ let updateCountdown = function() {
     let count = Math.max(0, Math.ceil((data.nextAlarmTime - Date.now())/1000));
     let sec = count%60;
     let min = (count-sec)/60;
+    if (sec < 10) {
+      sec = '0' + sec;
+    }
     counterElement.innerHTML = min + ':' + sec;
   });
 };
@@ -35,21 +38,21 @@ chrome.storage.local.get('isPaused', function(data) {
 });
 
 let isNotPausedDisplay = function() {
-  switchClasses.add('switch--on');
-  switchClasses.remove('switch--off');
+  switchClasses.add('is-not-paused');
+  switchClasses.remove('is-paused');
   switchButton.innerHTML = 'Pause';
 };
 
 let isPausedDisplay = function() {
-  switchClasses.add('switch--off');
-  switchClasses.remove('switch--on');
+  switchClasses.add('is-paused');
+  switchClasses.remove('is-not-paused');
   switchButton.innerHTML = 'Resume';
 };
 
 // If the switch is set on, continue counting down.
 // If the switch is set to off, clear the existing alarm.
 switchButton.onclick = function() {
-  if (!switchClasses.contains('switch--on')) {
+  if (!switchClasses.contains('is-not-paused')) {
     isNotPausedDisplay();
     chrome.storage.local.set({ isPaused: false });
     chrome.storage.local.get(['pausedCount','countdownMaxInMin'], function(data) {

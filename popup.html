@@ -1,32 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="https://fonts.googleapis.com/css?family=Barrio|Roboto:400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barrio|Roboto:400,600" rel="stylesheet">
     <style>
       body {
-        width: 100px;
-        padding: 0.5em 1em 1em;
+        width: 250px;
+        padding: 1em;
+        color: #333;
         font-family: Roboto, Dosis, Helvetica, Arial, sans-serif;
+        background-color: mediumspringgreen;
       }
       h1 {
         font-family: Barrio, Helvetica, Arial, sans-serif;
         font-size: 3em;
         letter-spacing: 4px;
       }
-      button, #switch {
+      #counter {
+        margin: 0 0 0.5em;
+        font-size: 2.5em;
+        text-align: center;
+      }
+      #switch {
+        padding: 0.5em 0.75em;
         outline: none;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 1px 1px 1px #333;
+        background-color: coral;
+        color: #333;
+        font-size: 1.4em;
+        font-weight: 600;
+        text-transform: capitalize;
       }
-      .switch--on {
+      .is-not-paused {
       }
-      .switch--off {
+      .is-paused {
+      }
+      .flex {
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+      }
+      .title-box {
+        padding: 0 2em;
+        text-align: right;
+        border-right: 1px solid #333;
+      }
+      .button-box {
+        padding: 0 2em;
       }
     </style>
   </head>
   <body>
-    <div>
-      <h1>Eye Rest</h1>
-      <p id="counter">&nbsp;</p>
-      <button id="switch" class="switch--on">Pause</button>
+    <div class="flex">
+      <div class="title-box">
+        <h1>Eye Rest</h1>
+      </div>
+      <div class="button-box">
+        <p id="counter">&nbsp;</p>
+        <button id="switch" class="is-not-paused">Pause</button>
+      </div>
     </div>
     <script src="helpers.js"></script>
     <script src="popup.js"></script>
