@@ -21,7 +21,7 @@ chrome.runtime.onInstalled.addListener(function() {
   });
 });
 
-clearAndCreateAlarm(countdownMaxInMin);
+clearAndCreateAlarm(countdownMaxInMin,countdownMaxInMin);
 
 // Add a listener for when the alarm is up.
 // When the alarm is up, create a window with timer.html.
