@@ -12,7 +12,9 @@ let updateCountdown = function() {
     // 0 and the actual count. We basically want to prevent the popup
     // from ever displaying a negative number.
     let count = Math.max(0, Math.ceil((data.nextAlarmTime - Date.now())/1000));
-    counterElement.innerHTML = count;
+    let sec = count%60;
+    let min = (count-sec)/60;
+    counterElement.innerHTML = min + ':' + sec;
   });
 };
 
