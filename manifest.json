@@ -11,17 +11,17 @@
   "page_action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/cat16.png",
-      "32": "images/cat32.png",
-      "48": "images/cat48.png",
-      "128": "images/cat128.png"
+      "16": "images/lookaway16.png",
+      "32": "images/lookaway32.png",
+      "48": "images/lookaway48.png",
+      "128": "images/lookaway128.png"
     }
   },
   "icons": {
-    "16": "images/cat16.png",
-    "32": "images/cat32.png",
-    "48": "images/cat48.png",
-    "128": "images/cat128.png"
+    "16": "images/lookaway16.png",
+    "32": "images/lookaway32.png",
+    "48": "images/lookaway48.png",
+    "128": "images/lookaway128.png"
   },
   "manifest_version": 2
 }
