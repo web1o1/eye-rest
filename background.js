@@ -3,22 +3,12 @@ let countdownMaxInMin = 20;
 let countdownMaxInSec = countdownMaxInMin * 60;
 let countdownMaxInMS = countdownMaxInSec * 1000;
 
+new chrome.declarativeContent.ShowPageAction();
+
 chrome.storage.local.set({
   date: date,
   isPaused: false,
   countdownMaxInMin: countdownMaxInMin
-});
-
-chrome.runtime.onInstalled.addListener(function() {
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-    chrome.declarativeContent.onPageChanged.addRules([{
-      conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: {hostEquals: 'developer.chrome.com'},
-      })
-      ],
-          actions: [new chrome.declarativeContent.ShowPageAction()]
-    }]);
-  });
 });
 
 clearAndCreateAlarm(countdownMaxInMin,countdownMaxInMin);
@@ -32,8 +22,8 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 
     chrome.windows.create({
       url: 'timer.html',
-      width: 550,
-      height: 500,
+      width: 600,
+      height: 550,
       left: 5,
       top: 100
     });
