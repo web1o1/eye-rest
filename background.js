@@ -23,11 +23,13 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
     chrome.storage.local.set({nextAlarmTime: nextAlarmTime});
 
     chrome.windows.create({
+      type: 'popup',
       url: 'timer.html',
-      width: 600,
-      height: 550,
+      width: 500,
+      height: 520,
       left: 5,
-      top: 100
+      top: 100,
+      focused: true
     });
   }
 });

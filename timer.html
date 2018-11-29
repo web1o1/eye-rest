@@ -5,8 +5,10 @@
     <link href="styles.css" rel="stylesheet">
     <style>
       body {
+        margin: 0;
         font-size: 1em;
         background-color: aquamarine;
+        border: palegreen solid 15px;
         /* bisque darkturquoise coral mediumspringgreen palegreen turquoise */
       }
       #timer {
@@ -40,14 +42,14 @@
   </head>
   <body class="pv1">
     <div class="flex flex--row-reverse p1">
-      <div class="flex flex--column pv1ph2 title-box">
+      <div class="flex flex--column pv1 pl2 title-box">
         <h1>Eye<br>Rest!</h1>
         <div class="pt3">
           <img src="lookaway.gif" alt="An animated gif that says to look away" class="lookaway"/>
           <p class="attribution">Gif by <a href="https://giphy.com/feibim" target="_blank" rel="noreferrer">@feibim</a></p>
         </div>
       </div>
-      <div class="flex flex--column ph2 content-box">
+      <div class="flex flex--column pr2 content-box">
         <div class="mt5">
           <p id="timer" class="right pv1">&nbsp;</p>
           <p class="right">Every 20 minutes</p>
