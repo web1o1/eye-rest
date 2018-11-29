@@ -3,7 +3,9 @@ let countdownMaxInMin = 20;
 let countdownMaxInSec = countdownMaxInMin * 60;
 let countdownMaxInMS = countdownMaxInSec * 1000;
 
-new chrome.declarativeContent.ShowPageAction();
+chrome.runtime.onInstalled.addListener(function() {
+  new chrome.declarativeContent.ShowPageAction();
+});
 
 chrome.storage.local.set({
   date: date,
