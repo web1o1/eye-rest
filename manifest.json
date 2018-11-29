@@ -2,7 +2,7 @@
   "name": "Eye Rest",
   "version": "1.0",
   "description": "An extension to rest your eyes every 20 minutes for 20 seconds.",
-  "permissions": ["activeTab", "alarms", "declarativeContent", "storage", "tabs"],
+  "permissions": ["alarms", "declarativeContent", "storage", "tabs"],
   "background": {
     "scripts": ["helpers.js", "background.js"],
     "persistent": false
