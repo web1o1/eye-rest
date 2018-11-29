@@ -58,6 +58,7 @@ let isPausedDisplay = function() {
 // If the switch is set to off, clear the existing alarm.
 switchButton.onclick = function() {
   if (!switchClasses.contains('is-not-paused')) {
+    // If isPaused = false, create the new alarm here.
     isNotPausedDisplay();
     chrome.storage.local.set({ isPaused: false });
     chrome.storage.local.get(['pausedCount','countdownMaxInMin'], function(data) {
@@ -65,6 +66,9 @@ switchButton.onclick = function() {
     });
     countdownInterval = setInterval(updateCountdown, 100);
   } else {
+    // If isPaused = true, store the existing count to pass back to
+    // background.js, clear the existing alarm by using the date
+    // in storage.
     isPausedDisplay();
     chrome.storage.local.set({
       isPaused: true,
@@ -74,9 +78,3 @@ switchButton.onclick = function() {
     clearAlarm();
   }
 }
-
-// If isPaused = true, store the existing count to pass back to
-// background.js, clear the existing alarm by using the date
-// in storage.
-
-// If isPaused = false, create the new alarm here.

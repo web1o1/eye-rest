@@ -3,10 +3,6 @@ let countdownMaxInMin = 20;
 let countdownMaxInSec = countdownMaxInMin * 60;
 let countdownMaxInMS = countdownMaxInSec * 1000;
 
-chrome.runtime.onInstalled.addListener(function() {
-  new chrome.declarativeContent.ShowPageAction();
-});
-
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
   chrome.declarativeContent.onPageChanged.addRules([{
     conditions: [new chrome.declarativeContent.PageStateMatcher({
