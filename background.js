@@ -5,9 +5,7 @@ let countdownMaxInMS = countdownMaxInSec * 1000;
 
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
   chrome.declarativeContent.onPageChanged.addRules([{
-    conditions: [new chrome.declarativeContent.PageStateMatcher({
-      pageUrl: {schemes: ['https', 'http', 'chrome']},
-    })],
+    conditions: [new chrome.declarativeContent.PageStateMatcher({})],
     actions: [new chrome.declarativeContent.ShowPageAction()]
   }]);
 });
